@@ -16,21 +16,36 @@ return (1);
 }
 
 /**
- * print_str - a function to print a string variable argument
- * @str: a character string pointer
+ * printchar - a function to print a character argument
+ * @pargs: a variadic list
  *
- * Return: void function
+ * Return: 1 in success
  */
 
-void print_str(char *str)
+int printchar(va_list pargs)
 {
+	_putchar(va_arg(pargs, int));
+	return (1);
+}
+
+/**
+ * printstr - a function to print a string variable argument
+ * @pargs: a variadic list
+ *
+ * Return: 1 in success
+ */
+
+int printstr(va_list pargs)
+{
+	char *s;
 	int i = 0;
 
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
+	s = va_arg(pargs, char *);
+
+	while (s[i] != '\0')
+	_putchar(s[i++]);
+
+	return (1);
 }
 
 /**
@@ -43,7 +58,7 @@ void print_str(char *str)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0;
+	int i = 0, count = 0;
 
 	va_start(args, format);
 
@@ -51,33 +66,59 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[++i])
+			if (format[++i] == '%')
 			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					break;
-				case 's':
-					print_str(va_arg(args, char *));
-					break;
-				case '%':
-					_putchar('%');
-					break;
-				default:
-					i++;
-					continue;
+				_putchar(format[i++]);
+				count++;
+				continue;
 			}
-		}
-		else if (format[i] == '\\')
-		{
-			i++;
-			continue;
+			else if (get_func(format[i]) == NULL)
+			{
+				_putchar(format[i - 1]);
+				_putchar(format[i++]);
+				count++;
+				continue;
+			}
+			get_func(format[i])(args);
 		}
 		else
 		{
 			_putchar(format[i]);
 		}
 		i++;
+		count++;
 	}
 
-	return (0);
+	return (count);
+}
+
+/**
+ * get_func - a function finder for the conversion specifiers
+ * @c: a character to act like as a specifier
+ *
+ * Return: an integer
+ */
+
+int (*get_func(char c))(va_list)
+{
+	spec funcs[] = {
+		{ 'c', printchar},
+		{ 's', printstr},
+		{ 'd', printint},
+		{ 'i', printint},
+		{ 'u', printuns},
+		{ 'b', printubin},
+		{ 'o', printuoct},
+		{ 'x', printuhex},
+		{ 'X', printuhex},
+		{ 'p', printaddr},
+		{ '\0', NULL}
+			};
+
+	int i = 0;
+
+	while (funcs[i].ch != '\0' && funcs[i].ch != c)
+		i++;
+
+	return (funcs[i].f);
 }
