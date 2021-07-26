@@ -33,6 +33,7 @@ int printuhex_C(va_list pargs);
 int printaddr(va_list pargs);
 int (*get_func(char c))(va_list);
 int printstr(va_list pargs);
+int printstr_custom(va_list pargs);
 int _putchar(char c);
 int _printf(const char *format, ...);
 void print_str(char *str);

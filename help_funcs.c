@@ -21,7 +21,7 @@ int printrevstr(va_list pargs)
 		return (1);
 	}
 
-	/**reve(s);**/
+	reve(s);
 
 	while (s[i] != '\0')
 	_putchar(s[i++]);

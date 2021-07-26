@@ -72,13 +72,12 @@ int _printf(const char *format, ...)
 				count++;
 				continue;
 			}
-			else if (get_func(format[i]) == NULL)
+			if (get_func(format[i]) == NULL)
 			{
 				_putchar(format[i - 1]);
 				_putchar(format[i++]);
 				count++;
-				continue;
-			}
+				continue; }
 			count += get_func(format[i])(args);
 		}
 		else
@@ -104,6 +103,7 @@ int (*get_func(char c))(va_list)
 	spec funcs[] = {
 		{ 'c', printchar},
 		{ 's', printstr},
+		{ 'S', printstr_custom},
 		{ 'd', printint},
 		{ 'i', printint},
 		{ 'u', printuns},
