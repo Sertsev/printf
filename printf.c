@@ -10,9 +10,9 @@
 int _putchar(char c)
 {
 
-write(1, &c, 1);
+	write(1, &c, 1);
 
-return (1);
+	return (1);
 }
 
 /**
@@ -45,7 +45,7 @@ int printstr(va_list pargs)
 	while (s[i] != '\0')
 	_putchar(s[i++]);
 
-	return (1);
+	return (i);
 }
 
 /**
@@ -79,7 +79,7 @@ int _printf(const char *format, ...)
 				count++;
 				continue;
 			}
-			get_func(format[i])(args);
+			count += get_func(format[i])(args);
 		}
 		else
 		{
@@ -110,8 +110,9 @@ int (*get_func(char c))(va_list)
 		{ 'b', printubin},
 		{ 'o', printuoct},
 		{ 'x', printuhex},
-		{ 'X', printuhex},
+		{ 'X', printuhex_C},
 		{ 'p', printaddr},
+		{ 'r', printrevstr},
 		{ '\0', NULL}
 			};
 

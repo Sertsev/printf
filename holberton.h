@@ -21,13 +21,15 @@ typedef struct conv
 
 char tstr(unsigned int n);
 void reve(char *buff);
+int printrevstr(va_list pargs);
 void _itoa(long int v, char *s, int base);
-void _uitoa(unsigned int v, char *s, unsigned int base);
+void _uitoa(unsigned long int v, char *s, unsigned int base);
 int printchar(va_list pargs);
 int printuns(va_list pargs);
 int printuoct(va_list pargs);
 int printubin(va_list pargs);
 int printuhex(va_list pargs);
+int printuhex_C(va_list pargs);
 int printaddr(va_list pargs);
 int (*get_func(char c))(va_list);
 int printstr(va_list pargs);
