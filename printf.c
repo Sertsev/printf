@@ -59,8 +59,12 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0, count = 0;
-
+	
+	
 	va_start(args, format);
+
+	if (!format)
+		return (-1);
 
 	while (format[i] != '\0')
 	{
@@ -113,6 +117,7 @@ int (*get_func(char c))(va_list)
 		{ 'X', printuhex_C},
 		{ 'p', printaddr},
 		{ 'r', printrevstr},
+		{ 'R', printrotstr},
 		{ '\0', NULL}
 			};
 

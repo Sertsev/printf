@@ -22,6 +22,8 @@ typedef struct conv
 char tstr(unsigned int n);
 void reve(char *buff);
 int printrevstr(va_list pargs);
+void rot13(char *s);
+int printrotstr(va_list pargs);
 void _itoa(long int v, char *s, int base);
 void _uitoa(unsigned long int v, char *s, unsigned int base);
 int printchar(va_list pargs);

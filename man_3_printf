@@ -1,0 +1,51 @@
+.\" Manpage for _printf
+.\" Contact @sakin977 or @sertsev to correct errors or typos.
+.TH man 1 "27 Jul 2021" "1.0" "_printf man page"
+.SH NAME
+_printf \- formatted output conversion
+.SH SYNOPSIS
+int _printf(const char *format, ...);
+.SH DESCRIPTION
+The _printf function produces output according to format. The output is written to the stdout, the standard output stream. It writes the output under the control of a format string that specifies how subsequent arguments(accessed via the variable-length argument facilities of stdarg) are converted to output
+.PP
+.B Return value
+.PP
+On success the function returns the number of characters printed excluding the null byte.
+On error then a negative value is returned.
+.PP
+.B Format of the string
+.PP
+Each format specification is introduced by the character % and ends with a conversion specifier. The arguments must correspond properly with the conversion specifier and hence are used in the order given where each specifier asks for the next argument. 
+An error might occur if unsufficient arguments are given.
+.PP
+.B The conversion specifier
+.PP
+A character that specifies the type of convertion to be applied.
+The vaious conversion specifiers are as follows:-
+
+.B d, i
+
+Handles signed or unsigned integers
+
+.B c
+
+The int argument is converted to an unsigned char and the resulting character is written.
+
+.B s
+
+The const char * argument is expected to be of a character pointer ie pointer to a string. The characters from the string are written excluding the null byte terminator
+
+.B %
+
+No argument is converted. The complete version of %% is written.
+
+.SH OPTIONS
+No options available
+.SH SEE ALSO
+Same optimized implementation in the standart library
+#include <stdio.h>
+printf(const char *format, ...);
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+@sertsev and @sakin977
