@@ -14,6 +14,8 @@ int printaddr(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = (unsigned long int) va_arg(pargs, void *);
 	_uitoa(a, s, 16);
@@ -43,6 +45,8 @@ int printuhex(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, unsigned long int);
 	_uitoa(a, s, 16);
@@ -69,6 +73,8 @@ int printuhex_C(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, unsigned long int);
 	_uitoa(a, s, 16);
@@ -98,6 +104,8 @@ int printstr_custom(va_list pargs)
 	char *c;
 
 	c = malloc(4);
+	if (c == NULL)
+		return (-1);
 
 	s = va_arg(pargs, char *);
 
@@ -115,8 +123,7 @@ int printstr_custom(va_list pargs)
 				if (c[0] >= 'a' && c[0] <= 'z')
 					c[0] -= 32;
 				_putchar(c[0]);
-				continue;
-			}
+				continue; }
 			n = s[i++];
 			_uitoa(n, c, 16);
 			t = 0;
@@ -124,12 +131,9 @@ int printstr_custom(va_list pargs)
 			{
 				if (c[t] >= 'a' && c[t] <= 'z')
 					c[t] -= 32;
-				_putchar(c[t++]);
-			}
-			continue;
-		}
-		_putchar(s[i++]);
-	}
+				_putchar(c[t++]); }
+			continue; }
+		_putchar(s[i++]); }
 
 	return (i);
 }

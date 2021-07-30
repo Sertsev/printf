@@ -42,6 +42,9 @@ int printstr(va_list pargs)
 
 	s = va_arg(pargs, char *);
 
+	if (s == NULL)
+		s = "(null)";
+
 	while (s[i] != '\0')
 	_putchar(s[i++]);
 
@@ -80,7 +83,7 @@ int _printf(const char *format, ...)
 			{
 				_putchar(format[i - 1]);
 				_putchar(format[i++]);
-				count++;
+				count += 2;
 				continue; }
 			count += get_func(format[i++])(args);
 			continue;

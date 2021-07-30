@@ -43,8 +43,14 @@ int printint(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, int);
+
+	if (a == 0)
+		return (1);
+
 	_itoa(a, s, 10);
 
 	while (s[i] != '\0')
@@ -69,6 +75,8 @@ int printuns(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, unsigned int);
 	_uitoa(a, s, 10);
@@ -95,6 +103,8 @@ int printuoct(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, unsigned long int);
 	_uitoa(a, s, 8);
@@ -121,6 +131,8 @@ int printubin(va_list pargs)
 	int i = 0;
 
 	s = malloc(256);
+	if (s == NULL)
+		return (-1);
 
 	a = va_arg(pargs, unsigned long int);
 	_uitoa(a, s, 2);

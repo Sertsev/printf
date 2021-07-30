@@ -61,6 +61,8 @@ void reve(char *buff)
 	char *strb;
 
 	strb = malloc(128);
+	if (strb == NULL)
+		return;
 
 	while (buff[i] != '\0')
 	{
@@ -90,6 +92,8 @@ void _itoa(long int v, char *s, int base)
 	int i = 0;
 
 	buf = malloc(128);
+	if (buf == NULL)
+		return;
 
 	if (v < 0)
 	{
@@ -141,6 +145,8 @@ void _uitoa(unsigned long int v, char *s, unsigned int base)
 	int i = 0;
 
 	buf = malloc(128);
+	if (buf == NULL)
+		return;
 
 	while (v > 0)
 	{
