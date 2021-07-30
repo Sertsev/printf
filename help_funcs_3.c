@@ -20,7 +20,8 @@ while (s[i] != '\0')
 	i++;
 }
 }
-/* printrotstr - a function to print a reverse of a given string
+/**
+ * printrotstr - a function to print a reverse of a given string
  * @pargs: a variadic list
  *
  * Return: 1 in success
