@@ -79,6 +79,8 @@ int _printf(const char *format, ...)
 				count++;
 				continue;
 			}
+			else if (format[i] == '\0')
+				continue;
 			if (get_func(format[i]) == NULL)
 			{
 				_putchar(format[i - 1]);

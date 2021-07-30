@@ -47,10 +47,6 @@ int printint(va_list pargs)
 		return (-1);
 
 	a = va_arg(pargs, int);
-
-	if (a == 0)
-		return (1);
-
 	_itoa(a, s, 10);
 
 	while (s[i] != '\0')

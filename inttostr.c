@@ -101,7 +101,7 @@ void _itoa(long int v, char *s, int base)
 		s[i] = '-';
 	}
 
-	while (v > 0)
+	while (v >= 0)
 	{
 		rem = v % base;
 		buf[i] = tstr(rem);
